@@ -14,6 +14,7 @@ npm i react-native-app-intro-slider --save
   * [Usage](#usage)
     * [Basic Example](#basic-example)
     * [Configuring Buttons](#configuring-buttons)
+    * [Configuring custom buttons for every single slide](#configuring-custom-buttons-for-every-single-slide)
     * [Custom Slide Layout](#custom-slide-layout)
   * [Props and options](#props-and-options)
     * [Configure behaviour](#configure-behaviour)
@@ -149,6 +150,69 @@ export default class App extends React.Component {
 }
 ```
 
+### Configuring custom buttons for every single slide
+
+![Slide buttons example gif](https://i.gyazo.com/e17470ee70ffe6fc1c1bfdfef74a5588.gif)
+
+```javascript
+import React from 'react';
+import { Ionicons } from '@expo/vector-icons';
+import { StyleSheet, View } from 'react-native';
+import AppIntroSlider from 'react-native-app-intro-slider';
+
+const styles = StyleSheet.create({
+  image: {
+    width: 320,
+    height: 320,
+  }
+});
+
+const slides = [
+  {
+    key: 'somethun',
+    title: 'Quick setup, good defaults',
+    text: 'React-native-app-intro-slider is easy to setup with a small footprint and no dependencies. And it comes with good default layouts!',
+    icon: 'ios-images-outline',
+    colors: ['#63E2FF', '#B066FE'],
+    buttons: [
+      { title: 'Slide Button 1', onPress: () => console.log('somethun custom button 1') },
+      { title: 'Slide Button 2', onPress: () => console.log('somethun custom button 2') },
+      { title: 'Slide Button 3', onPress: () => console.log('somethun custom button 3') },
+    ],
+  },
+  {
+    key: 'somethun1',
+    title: 'Super customizable',
+    text: 'The component is also super customizable, so you can adapt it to cover your needs and wants.',
+    icon: 'ios-options-outline',
+    colors: ['#A3A1FF', '#3A3897'],
+  },
+  {
+    key: 'somethun2',
+    title: 'No need to buy me beer',
+    text: 'Usage is all free',
+    icon: 'ios-beer-outline',
+    colors: ['#29ABE2', '#4F00BC'],
+    buttons: [
+      { title: 'Slide Button 3', onPress: () => console.log('somethun2 custom button 1') },
+      { title: 'Slide Button 4', onPress: () => console.log('somethun2 custom button 2') },
+    ],
+  },
+]
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <AppIntroSlider
+        slides={slides}
+        useSlideButtons
+        disableBottomMargin
+      />
+    );
+  }
+}
+```
+
 ### Custom slide layout
 
 ![Custom layout example gif](Images/custom-example.gif)
@@ -255,6 +319,8 @@ doneLabel        | `string`   | `Done`                    | Custom label for Don
 nextLabel        | `string`   | `Next`                    | Custom label for Next button
 prevLabel        | `string`   | `Back`                    | Custom label for Prev button
 bottomButton     | `boolean`  | `false`                   | Enable to show a full-width button under pagination
+useSlideButtons  | `boolean`  | `false`                   | Enable to use custom buttons for every single slide
+disableBottomMargin| `boolean`  | `false`                   | Enable to remove the margin from the bottom of slide for the buttons
 buttonStyle      | `style`    | `null`                    | Styling of outer button component
 buttonTextStyle  | `style`    | `null`                    | Styling of button text component
 dotStyle         | `style`    | {backgroundColor: 'rgba(0, 0, 0, .2)'} | Style of inactive pagination dots
@@ -291,6 +357,7 @@ textStyle        | `Style`-prop        | Styling for the text (e.g color, fontSi
 image            | `Image`-source prop | Slide image
 imageStyle       | `Style`-prop        | Styling for the image (e.g. size)
 backgroundColor  | `string`            | Slide background color
+buttons          | `array`             | Custom slide buttons. (e.g. `buttons: [{ title: 'Button 1', onPress: () => console.log('button 1 clicked') }]`)
 
 If you use a custom `renderItem`-method you can design your slide objects as you see fit.
 
@@ -300,7 +367,7 @@ You can run the example Expo-app by cloning the repo:
 
 
 ```sh
-git clone https://github.com/Jacse/react-native-app-intro-slider.git
+git clone https://github.com/abdullahceylan/react-native-app-intro-slider.git
 cd react-native-app-intro-slider/Example
 yarn
 yarn start

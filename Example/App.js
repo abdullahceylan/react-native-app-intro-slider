@@ -36,6 +36,11 @@ const slides = [
     text: 'React-native-app-intro-slider is easy to setup with a small footprint and no dependencies. And it comes with good default layouts!',
     icon: 'ios-images-outline',
     colors: ['#63E2FF', '#B066FE'],
+    buttons: [
+      { title: 'Slide Button 1', onPress: () => console.log('somethun custom button 1') },
+      { title: 'Slide Button 2', onPress: () => console.log('somethun custom button 2') },
+      { title: 'Slide Button 3', onPress: () => console.log('somethun custom button 3') },
+    ],
   },
   {
     key: 'somethun1',
@@ -50,6 +55,10 @@ const slides = [
     text: 'Usage is all free',
     icon: 'ios-beer-outline',
     colors: ['#29ABE2', '#4F00BC'],
+    buttons: [
+      { title: 'Slide Button 3', onPress: () => console.log('somethun2 custom button 1') },
+      { title: 'Slide Button 4', onPress: () => console.log('somethun2 custom button 2') },
+    ],
   },
 ];
 
@@ -78,9 +87,11 @@ export default class App extends React.Component {
       <AppIntroSlider
         slides={slides}
         renderItem={this._renderItem}
-        bottomButton
-        showPrevButton
-        showSkipButton
+        useSlideButtons
+        disableBottomMargin
+        // bottomButton
+        // showPrevButton
+        // showSkipButton
         // hideNextButton
         // hideDoneButton
         // onSkip={() => console.log("skipped")}
