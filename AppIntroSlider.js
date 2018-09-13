@@ -35,7 +35,7 @@ export default class AppIntroSlider extends React.Component {
     buttonStyle: null,
     buttonTextStyle: null,
     useSlideButtons: false,
-    disableBottomMargin: false,
+    disableBottomButtonMargin: false,
   }
   state = {
     width,
@@ -100,17 +100,25 @@ export default class AppIntroSlider extends React.Component {
     const perButtonWidth = buttons.length > 1 ? 100 / buttons.length - 1 : 100;
     return (
       <View style={styles.slideButtonsContainer}>
-        { buttons.map(button => (
-          <View style={[styles.slideButtonContainer, { width: `${perButtonWidth}%` }]} key={button.title}>
-            <TouchableOpacity onPress={button.onPress} style={styles.flexOne}>
-              <View style={[styles.bottomButton, button.style]}>
-                <Text style={[styles.buttonText, button.buttonTextStyle]}>
-                  {button.title}
-                </Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-        ))}
+        { buttons.map((button) => {
+          const buttonPlatform = button.platform ? button.platform : 'both';
+          if (
+            (Platform.OS === 'ios' && buttonPlatform === 'android')
+            || (Platform.OS === 'android' && buttonPlatform === 'ios')
+          ) { return null; }
+
+          return (
+            <View style={[styles.slideButtonContainer, { width: `${perButtonWidth}%` }]} key={button.title}>
+              <TouchableOpacity onPress={button.onPress} style={styles.flexOne}>
+                <View style={[styles.bottomButton, button.style]}>
+                  <Text style={[styles.buttonText, button.buttonTextStyle]}>
+                    {button.title}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          );
+        })}
       </View>
     );
   }

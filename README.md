@@ -175,9 +175,9 @@ const slides = [
     icon: 'ios-images-outline',
     colors: ['#63E2FF', '#B066FE'],
     buttons: [
-      { title: 'Slide Button 1', onPress: () => console.log('somethun custom button 1') },
-      { title: 'Slide Button 2', onPress: () => console.log('somethun custom button 2') },
-      { title: 'Slide Button 3', onPress: () => console.log('somethun custom button 3') },
+      { platform: 'ios', title: 'Slide Button 1', onPress: () => console.log('somethun custom button 1') },
+      { platform: 'android', title: 'Slide Button 2', onPress: () => console.log('somethun custom button 2') },
+      { platform: 'both', title: 'Slide Button 3', onPress: () => console.log('somethun custom button 3') },
     ],
   },
   {
@@ -206,7 +206,7 @@ export default class App extends React.Component {
       <AppIntroSlider
         slides={slides}
         useSlideButtons
-        disableBottomMargin
+        disableBottomButtonMargin
       />
     );
   }
@@ -320,7 +320,7 @@ nextLabel        | `string`   | `Next`                    | Custom label for Nex
 prevLabel        | `string`   | `Back`                    | Custom label for Prev button
 bottomButton     | `boolean`  | `false`                   | Enable to show a full-width button under pagination
 useSlideButtons  | `boolean`  | `false`                   | Enable to use custom buttons for every single slide
-disableBottomMargin| `boolean`  | `false`                   | Enable to remove the margin from the bottom of slide for the buttons
+disableBottomButtonMargin| `boolean`  | `false`                   | Enable to remove the margin from the bottom of slide for the buttons
 buttonStyle      | `style`    | `null`                    | Styling of outer button component
 buttonTextStyle  | `style`    | `null`                    | Styling of button text component
 dotStyle         | `style`    | {backgroundColor: 'rgba(0, 0, 0, .2)'} | Style of inactive pagination dots
@@ -358,6 +358,14 @@ image            | `Image`-source prop | Slide image
 imageStyle       | `Style`-prop        | Styling for the image (e.g. size)
 backgroundColor  | `string`            | Slide background color
 buttons          | `array`             | Custom slide buttons. (e.g. `buttons: [{ title: 'Button 1', onPress: () => console.log('button 1 clicked') }]`)
+
+#### slide buttons array of object
+
+Name             | Type                | Default                   | Note           
+-----------------|---------------------|---------------------------|---------------------
+title            | `string`            | No default, required      | The button title
+platform         | `string`            | `both`                    | On which platform the button will be displayed. `ios` - `android` - `both`
+onPress          | `function`          | `void`                    | Called when user presses
 
 If you use a custom `renderItem`-method you can design your slide objects as you see fit.
 
