@@ -108,7 +108,7 @@ export default class AppIntroSlider extends React.Component {
           ) { return null; }
 
           return (
-            <View style={[styles.slideButtonContainer, { width: `${perButtonWidth}%` }]} key={button.title}>
+            <View style={[styles.slideButtonContainer, { width: `${perButtonWidth}%` }, button.containerStyle]} key={button.title}>
               <TouchableOpacity onPress={button.onPress} style={styles.flexOne}>
                 <View style={[styles.bottomButton, button.style]}>
                   <Text style={[styles.buttonText, button.buttonTextStyle]}>
