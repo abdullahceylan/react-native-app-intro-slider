@@ -175,9 +175,27 @@ const slides = [
     icon: 'ios-images-outline',
     colors: ['#63E2FF', '#B066FE'],
     buttons: [
-      { platform: 'ios', title: 'Slide Button 1', onPress: () => console.log('somethun custom button 1') },
-      { platform: 'android', title: 'Slide Button 2', onPress: () => console.log('somethun custom button 2') },
-      { platform: 'both', title: 'Slide Button 3', onPress: () => console.log('somethun custom button 3') },
+      {
+        platform: 'ios',
+        title: 'Slide Button 1',
+        onPress: () => console.log('somethun custom button 1'),
+        containerStyle: {{ height: 44 }},
+        buttonTextStyle: {{ color: '#000' }}
+      },
+      {
+        platform: 'android',
+        title: 'Slide Button 2',
+        onPress: () => console.log('somethun custom button 2'),
+        containerStyle: {{ height: 44 }},
+        buttonTextStyle: {{ color: '#000' }}
+      },
+      {
+        platform: 'both',
+        title: 'Slide Button 3',
+        onPress: () => console.log('somethun custom button 3'),
+        containerStyle: {{ height: 44 }},
+        buttonTextStyle: {{ color: '#000' }}
+      },
     ],
   },
   {
@@ -194,8 +212,18 @@ const slides = [
     icon: 'ios-beer-outline',
     colors: ['#29ABE2', '#4F00BC'],
     buttons: [
-      { title: 'Slide Button 3', onPress: () => console.log('somethun2 custom button 1') },
-      { title: 'Slide Button 4', onPress: () => console.log('somethun2 custom button 2') },
+      {
+        title: 'Slide Button 3',
+        onPress: () => console.log('somethun2 custom button 1'),
+        containerStyle: {{ height: 44 }},
+        buttonTextStyle: {{ color: '#000' }}
+      },
+      {
+        title: 'Slide Button 4',
+        onPress: () => console.log('somethun2 custom button 2'),
+        containerStyle: {{ height: 44 }},
+        buttonTextStyle: {{ color: '#000' }}
+      },
     ],
   },
 ]
@@ -366,6 +394,8 @@ Name             | Type                | Default                   | Note
 title            | `string`            | No default, required      | The button title
 platform         | `string`            | `both`                    | On which platform the button will be displayed. `ios` - `android` - `both`
 onPress          | `function`          | `void`                    | Called when user presses
+containerStyle   | `Style`-prop        | `null`                    | Styling for the button container (e.g. height)
+buttonTextStyle  | `Style`-prop        | `null`                    | Styling for the button text (e.g. color)
 
 If you use a custom `renderItem`-method you can design your slide objects as you see fit.
 
