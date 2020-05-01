@@ -13,7 +13,9 @@
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
-    "test": "node node_modules/jest/bin/jest.js --watch"
+    "test": "node node_modules/jest/bin/jest.js --watch",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "jest": {
     "preset": "jest-expo"
@@ -22,6 +24,8 @@
     "expo": "^28.0.0",
     "react": "16.3.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-28.0.0.tar.gz",
-    "react-native-app-intro-slider": "file:../"
-  }
+    "react-native-app-intro-slider": "file:../",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
